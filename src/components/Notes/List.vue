@@ -5,6 +5,7 @@
           {{ note }}
           <p style="cursor: pointer;" @click="$emit('onRemove', index)">&#x2715;</p>
       </div>
+      <p>TEst</p>
       <!-- <div class="note-footer"></div> -->
     </div>
   </div>

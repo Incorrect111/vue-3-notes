@@ -34,6 +34,7 @@ export default {
     },
     handleTagClick(tag) {
       console.log(tag)
+      this.$emit('addTag', tag)
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <Form @onSubmit="handleSubmit" />
-  <List @onRemove="handleRemove" :notes="notes" />
+  <List @onRemove="handleRemove" :items="notes" />
 </template>
 
 <script>

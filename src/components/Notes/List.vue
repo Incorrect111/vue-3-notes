@@ -1,11 +1,10 @@
 <template>
   <div class="notes-list">
-    <div class="note-item" v-for="(note, index) in notes" :key="index">
+    <div class="note-item" v-for="(note, index) in items" :key="index">
       <div class="note-header">
           {{ note }}
           <p style="cursor: pointer;" @click="$emit('onRemove', index)">&#x2715;</p>
       </div>
-      <p>TEst</p>
       <!-- <div class="note-footer"></div> -->
     </div>
   </div>
@@ -14,7 +13,7 @@
 <script>
 export default {
   props: {
-    notes: {
+    items: {
       type: Array
     }
   }

@@ -19,42 +19,42 @@ export default {
         {
           title: 'Finish course',
           tags: ['work', 'home']
-        },
-        {
-          title: 'Hello',
-          tags: []
         }
       ]
     }
   },
 
-  mounted(){
-    this.getNotes();
+  mounted() {
+    this.getNotes()
   },
 
   watch: {
     notes: {
-      handler(updatedList){
+      handler(updatedList) {
         localStorage.setItem('notes', JSON.stringify(updatedList))
       },
       deep: true
     }
   },
   methods: {
-    getNotes(){
-      const localNotes = localStorage.getItem("notes")
+    // * Get / Set notes
+    getNotes() {
+      const localNotes = localStorage.getItem('notes')
       if (localNotes) {
         this.notes = JSON.parse(localNotes)
       }
     },
+    // * submit note
     handleSubmit(title) {
       const note = {
         title: title,
-        tags:[]
+        tags: []
       }
       this.notes.push(note)
       console.log(this.notes)
     },
+
+     // * remove note
     handleRemove(index) {
       this.notes.splice(index, 1)
     },

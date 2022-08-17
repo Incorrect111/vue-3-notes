@@ -27,12 +27,32 @@ export default {
       ]
     }
   },
+
+  mounted(){
+    this.getNotes();
+  },
+
+  watch: {
+    notes: {
+      handler(updatedList){
+        localStorage.setItem('notes', JSON.stringify(updatedList))
+      },
+      deep: true
+    }
+  },
   methods: {
-    handleSubmit(name) {
-      this.notes.push({
-        title: name,
-        tag: this.handleTag()
-      })
+    getNotes(){
+      const localNotes = localStorage.getItem("notes")
+      if (localNotes) {
+        this.notes = JSON.parse(localNotes)
+      }
+    },
+    handleSubmit(title) {
+      const note = {
+        title: title,
+        tags:[]
+      }
+      this.notes.push(note)
       console.log(this.notes)
     },
     handleRemove(index) {

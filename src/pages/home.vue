@@ -45,11 +45,12 @@ export default {
       }
     },
     // * submit note
-    handleSubmit(title) {
-      const note = {
-        title: title,
-        tags: []
-      }
+    handleSubmit(note) {
+      console.log(note)
+      // const note = {
+      //   title: note.title,
+      //   tags: note.tags
+      // }
       this.notes.push(note)
       console.log(this.notes)
     },
@@ -59,7 +60,7 @@ export default {
       this.notes.splice(index, 1)
     },
     handleTag(tag) {
-      return tag
+      console.log(tag)
     }
   }
 }

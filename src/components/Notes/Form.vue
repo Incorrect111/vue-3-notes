@@ -7,7 +7,7 @@
         v-model="inputValue"
         placeholder="Type your note"
       />
-      <TagsList @onItemClick="handleTagClick" :items="tags" />
+      <TagsList @onItemClick="pushTags" :items="tags" />
       <button class="btn btnPrimary" type="submit">Add note</button>
     </form>
   </div>
@@ -23,18 +23,23 @@ export default {
   data() {
     return {
       inputValue: '',
-      tags: ['home', 'work', 'travel']
+      tags: ['home', 'work', 'travel'],
+      tagsSelected: []
     }
   },
   methods: {
+    //push note
     onSubmit() {
-      this.$emit('onSubmit', this.inputValue)
-      console.log(this.inputValue)
+      this.$emit('onSubmit', {
+        title: this.inputValue,
+        tags: this.tagsSelected
+      })
       this.inputValue = ''
+      this.tagsSelected = []
     },
-    handleTagClick(tag) {
-      console.log(tag)
-      this.$emit('addTag', tag)
+    //push tags
+    pushTags(tag) {
+      if (!this.tagsSelected.includes(tag)) this.tagsSelected.push(tag)
     }
   }
 }

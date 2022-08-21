@@ -14,11 +14,25 @@ export default {
       notes: [
         {
           title: 'Learn vue 3',
-          tags: ['work']
+          tags: [
+            {
+              title: 'work',
+              isActive: false
+            }
+          ]
         },
         {
           title: 'Finish course',
-          tags: ['work', 'home']
+          tags: [
+            {
+              title: 'work',
+              isActive: false
+            },
+            {
+              title: 'home',
+              isActive: false
+            }
+          ]
         }
       ]
     }
@@ -46,16 +60,14 @@ export default {
     },
     // * submit note
     handleSubmit(note) {
-      console.log(note)
-      // const note = {
-      //   title: note.title,
-      //   tags: note.tags
-      // }
+      //Reset tagIsactive
+      note.tags.forEach(el => {
+        el.isActive = false
+      })
       this.notes.push(note)
-      console.log(this.notes)
     },
 
-     // * remove note
+    // * remove note
     handleRemove(index) {
       this.notes.splice(index, 1)
     },

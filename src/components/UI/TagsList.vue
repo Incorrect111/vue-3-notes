@@ -2,12 +2,12 @@
   <div class="tags-list">
     <div
       class="tag-item"
-      v-for="item in items"
+      v-for="(item) in items"
       :key="item"
-      :class="{ isPreview: isPreview, isActive: isActive }"
-      @click="$emit('onItemClick', item), isActive=!isActive"
+      @click="onClickTag(item)"
+      :class="{ isPreview: isPreview, isActive: item.isActive }"
     >
-      {{ item }}
+     {{ item.title }}
     </div>
   </div>
 </template>
@@ -29,13 +29,12 @@ export default {
     }
   },
   data() {
-    return {
-
-    }
+    return {}
   },
   methods: {
     onClickTag(tag) {
-      console.log(tag)
+      tag.isActive =! tag.isActive
+      this.$emit('onItemClick', tag)
     }
   }
 }
@@ -69,5 +68,6 @@ export default {
   &:last-child {
     margin-right: 0;
   }
+
 }
 </style>

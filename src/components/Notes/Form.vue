@@ -7,7 +7,7 @@
         v-model="inputValue"
         placeholder="Type your note"
       />
-      <TagsList :isActive = false @onItemClick="pushTags" :items="tags" />
+      <TagsList ref="taglist" @onItemClick="pushTags" :items="tags" />
       <button class="btn btnPrimary" type="submit">Add note</button>
     </form>
   </div>
@@ -25,16 +25,13 @@ export default {
       inputValue: '',
       tags: [
         {
-          title: 'home',
-          isActive: false
+          title: 'home'
         },
         {
-          title: 'work',
-          isActive: false
+          title: 'work'
         },
         {
-          title: 'travel',
-          isActive: false
+          title: 'travel'
         }
       ],
       tagsSelected: []
@@ -47,13 +44,13 @@ export default {
         title: this.inputValue,
         tags: this.tagsSelected
       })
+      //reset
       this.inputValue = ''
       this.tagsSelected = []
-      
+      this.$refs.taglist.resetTagActiveClass()
     },
     //push tags
     pushTags(tag) {
-      this.isActive =! this.isActive
       if (!this.tagsSelected.some(el => el.title === tag.title)) {
         this.tagsSelected.push(tag)
       }

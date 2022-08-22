@@ -1,5 +1,5 @@
 <template>
-  <Form @onSubmit="handleSubmit" @addTag="handleTag" />
+  <Form @onSubmit="handleSubmit" />
   <List @onRemove="handleRemove" :items="notes" />
 </template>
 
@@ -16,8 +16,7 @@ export default {
           title: 'Learn vue 3',
           tags: [
             {
-              title: 'work',
-              isActive: false
+              title: 'work'
             }
           ]
         },
@@ -25,12 +24,10 @@ export default {
           title: 'Finish course',
           tags: [
             {
-              title: 'work',
-              isActive: false
+              title: 'work'
             },
             {
-              title: 'home',
-              isActive: false
+              title: 'home'
             }
           ]
         }
@@ -60,10 +57,6 @@ export default {
     },
     // * submit note
     handleSubmit(note) {
-      //Reset tagIsactive
-      note.tags.forEach(el => {
-        el.isActive = false
-      })
       this.notes.push(note)
     },
 
@@ -71,9 +64,6 @@ export default {
     handleRemove(index) {
       this.notes.splice(index, 1)
     },
-    handleTag(tag) {
-      console.log(tag)
-    }
   }
 }
 </script>

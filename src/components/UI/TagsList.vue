@@ -2,12 +2,12 @@
   <div class="tags-list">
     <div
       class="tag-item"
-      v-for="(item) in items"
+      v-for="item in items"
       :key="item"
-      @click="onClickTag(item)"
-      :class="{ isPreview: isPreview, isActive: item.isActive }"
+      @click="onClickTag(item, $event)"
+      :class="{ isPreview: isPreview }"
     >
-     {{ item.title }}
+      {{ item.title }}
     </div>
   </div>
 </template>
@@ -19,22 +19,23 @@ export default {
       type: Array,
       required: true
     },
-    isActive: {
-      type: Boolean,
-      default: false
-    },
     isPreview: {
       type: Boolean,
       default: false
     }
   },
-  data() {
-    return {}
-  },
+
   methods: {
-    onClickTag(tag) {
-      tag.isActive =! tag.isActive
+    onClickTag(tag, event) {
+      event.target.classList.toggle('isActive')
       this.$emit('onItemClick', tag)
+    },
+    resetTagActiveClass() {
+      const tagItems = document.getElementsByClassName('tag-item')
+
+      for (let i = 0; i < tagItems.length; i++) {
+        tagItems[i].classList.remove('isActive')
+      }
     }
   }
 }
@@ -68,6 +69,5 @@ export default {
   &:last-child {
     margin-right: 0;
   }
-
 }
 </style>

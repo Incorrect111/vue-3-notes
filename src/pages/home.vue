@@ -16,7 +16,6 @@ export default {
   },
 
   created() {
-    console.log(this.$store.getters.getNotes)
    this.notes = this.$store.getters.getNotes
   },
 

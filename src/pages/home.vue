@@ -11,12 +11,29 @@ export default {
   components: { Form, List },
   data() {
     return {
-      notes: []
+      notes: [{
+        title: 'Learn vue 3',
+      },
+      {
+        title: 'Finish course',
+
+      }
+    ],
+    tags: [{
+        title: 'work'
+      },
+      {
+        title: 'home'
+      },
+      {
+        title: 'travel'
+      }
+    ]
     }
   },
 
-  created() {
-   this.notes = this.$store.getters.getNotes
+  mounted(){
+    this.getNotes()
   },
 
   watch: {

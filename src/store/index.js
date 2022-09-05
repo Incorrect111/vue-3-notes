@@ -1,28 +1,10 @@
-import { createStore } from 'vuex';
+import {
+  createStore
+} from 'vuex';
 
 export const store = createStore({
   state: {
-    notes: [
-      {
-        title: 'Learn vue 3',
-        tags: [
-          {
-            title: 'work'
-          }
-        ]
-      },
-      {
-        title: 'Finish course',
-        tags: [
-          {
-            title: 'work'
-          },
-          {
-            title: 'home'
-          }
-        ]
-      }
-    ],
+    
   },
   mutations: {
     pushNote(state, note) {
@@ -30,11 +12,12 @@ export const store = createStore({
     }
   },
   actions: {
-    pushNote(context, note){
+    pushNote(context, note) {
       context.commit('pushNote', note)
     }
   },
   getters: {
-    getNotes: state => state.notes
+    getNotes: state => state.notes,
+    getTags: state => state.tags
   }
 })

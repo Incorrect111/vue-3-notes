@@ -14,16 +14,16 @@
 
 <script>
 export default {
-  props: {
-    items: {
-      type: Array,
-      required: true
-    },
-    isPreview: {
-      type: Boolean,
-      default: false
-    }
+props: {
+  items: {
+    type: Array
   },
+  isPreview: {
+    type: Boolean,
+    required: true
+  }
+},
+
 
   methods: {
     onClickTag(tag, event) {

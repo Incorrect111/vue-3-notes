@@ -7,7 +7,7 @@
         v-model="inputValue"
         placeholder="Type your note"
       />
-      <TagsList ref="taglist" @onItemClick="pushTags" :items="tags" />
+      <TagsList ref="taglist" :isActive="false" :isPreview="false" @onItemClick="pushTags" :items="tags"/>
       <button class="btn btnPrimary" type="submit">Add note</button>
     </form>
   </div>
@@ -34,13 +34,14 @@ export default {
           title: 'travel'
         }
       ],
-      tagsSelected: []
+      tagsSelected: [],
+      
     }
   },
   methods: {
     //push note
     onSubmit() {
-      this.$emit('onSubmit', {
+      this.$emit('onSubmit',{
         title: this.inputValue,
         tags: this.tagsSelected
       })
@@ -51,6 +52,7 @@ export default {
     },
     //push tags
     pushTags(tag) {
+      this.isActive =! this.isActive
       if (!this.tagsSelected.some(el => el.title === tag.title)) {
         this.tagsSelected.push(tag)
       }

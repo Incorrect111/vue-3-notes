@@ -11,13 +11,28 @@ export default {
   components: { Form, List },
   data() {
     return {
-      notes: []
+      notes: [
+        {
+          title: 'Learn vue 3',
+          tags: [
+            {
+              title: 'work'
+            }
+          ]
+        },
+        {
+          title: 'Finish course',
+          tags: [
+            {
+              title: 'work'
+            },
+            {
+              title: 'home'
+            }
+          ]
+        }
+      ]
     }
-  },
-
-  created() {
-    console.log(this.$store.getters.getNotes)
-   this.notes = this.$store.getters.getNotes
   },
 
   watch: {
@@ -44,7 +59,7 @@ export default {
     // * remove note
     handleRemove(index) {
       this.notes.splice(index, 1)
-    },
+    }
   }
 }
 </script>

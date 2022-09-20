@@ -34,9 +34,12 @@ export default {
 <style lang="scss">
 .notes-list {
   padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .note-item {
-  width: 100%;
+  width: 50%;
   padding: 18px 20px;
   margin-bottom: 20px;
   border-radius: 14px;
